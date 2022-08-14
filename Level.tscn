@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=3]
 
 [node name="Level" type="Spatial"]
@@ -15,7 +14,6 @@ depth = 22.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49188, 0 )
-script = ExtResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.0626163, 0.829906, -0.554379, 0.35677, 0.537378, 0.76416, 0.932091, -0.149937, -0.329734, 0, 7.75059, -0.538 )
