@@ -37,3 +37,8 @@ func update_path():
 func _on_Timer_timeout():
 	update_path()
 	currentPathIndex = 0
+
+
+func _on_health_hp_zero_signal():
+	# hp is zeor need to die
+	queue_free()

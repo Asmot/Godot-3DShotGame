@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://images/health.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode unshaded;
+uniform sampler2D base_color;
+
+uniform float percent = 1.0;
+
+void fragment(){
+	vec4 color = texture(base_color,UV);
+	if(UV.x < percent){
+		ALBEDO = color.rgb;
+	}else{
+		ALPHA = 0.0;
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/percent = 1.0
+shader_param/base_color = ExtResource( 1 )
