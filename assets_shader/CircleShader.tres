@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode unshaded;
+uniform vec4 center_color;
+uniform vec4 edge_color;
+
+void fragment(){
+	
+	float len = length(UV - vec2(0.5, 0.5));
+	if (len > 0.5) {
+		ALPHA = 0.;
+	} else {
+		float radius_1 = len * 2.0;
+		ALPHA = mix(center_color.a, edge_color.a, radius_1);
+		vec4 color = mix(center_color, edge_color, radius_1);
+		ALBEDO = color.rgb;
+	}
+}"
+
+[resource]
+shader = SubResource( 2 )
+shader_param/center_color = Plane( 1, 0, 0, 0.8 )
+shader_param/edge_color = Plane( 1, 0, 0, 0 )

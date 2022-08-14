@@ -2,6 +2,9 @@ extends KinematicBody
 
 class_name Enemy
 
+# move speed
+export var speed := 5;
+
 # ememy need know the ground navigation and the player
 # use them to find a way to palayer
 var ground_navigation : Navigation
@@ -11,8 +14,8 @@ var path : PoolVector3Array
 # for move along the path
 var currentPathIndex = 0;
 
-# move speed
-export var speed := 5;
+# reocrd if player in attack area
+var isAttacking = false;
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):
@@ -27,6 +30,14 @@ func _physics_process(delta):
 			var velocity = toward_dir.normalized()
 			move_and_slide(velocity * speed)
 	
+	checkAttacking()
+	
+# if is attacking change the color
+func checkAttacking():
+	if isAttacking:
+		$AttackRadius/Body.visible = true
+	else:
+		$AttackRadius/Body.visible = false
 
 func update_path():
 	if (ground_navigation and player) :
@@ -44,3 +55,14 @@ func _on_Timer_timeout():
 func _on_health_hp_zero_signal():
 	# hp is zeor need to die
 	queue_free()
+
+
+func _on_AttackRadius_body_entered(body : Node):
+	# play enter the attack area
+	if body == player:
+		isAttacking = true;
+	
+
+func _on_AttackRadius_body_exited(body):
+	if body == player:
+		isAttacking = false;
