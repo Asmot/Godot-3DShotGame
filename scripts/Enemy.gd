@@ -1,5 +1,7 @@
 extends KinematicBody
 
+class_name Enemy
+
 # ememy need know the ground navigation and the player
 # use them to find a way to palayer
 var ground_navigation : Navigation

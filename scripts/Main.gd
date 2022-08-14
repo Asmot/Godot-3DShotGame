@@ -6,10 +6,7 @@ var rayTarget = Vector3()
 const RAY_LENGTH = 2000;
 
 func _ready():
-	# set ememy ground and player
-	for enemy in $Enemies.get_children():
-		enemy.player = $Player
-		enemy.ground_navigation = $GroundNavigation
+	pass
 
 func _physics_process(delta):
 	
