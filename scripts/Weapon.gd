@@ -1,6 +1,6 @@
 extends Spatial
 
-export var bullet_speed := 1
+var bullet_speed = 50
 
 var BulletNode = preload("res://assets/Bullet.tscn")
 
