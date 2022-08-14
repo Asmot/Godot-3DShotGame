@@ -5,6 +5,12 @@ var rayOrigin = Vector3()
 var rayTarget = Vector3()
 const RAY_LENGTH = 2000;
 
+func _ready():
+	# set ememy ground and player
+	for enemy in $Enemies.get_children():
+		enemy.player = $Player
+		enemy.ground_navigation = $GroundNavigation
+
 func _physics_process(delta):
 	
 	# mouse pos to world pos, the pos need on some object
