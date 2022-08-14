@@ -5,9 +5,11 @@ class_name Enemy
 # move speed
 export var speed := 5;
 
+signal enemy_free_with_destrunction_signal
+
 # ememy need know the ground navigation and the player
 # use them to find a way to palayer
-var ground_navigation : Navigation
+export(PackedScene) var ground_navigation
 var player : KinematicBody
 var path : PoolVector3Array 
 
@@ -54,7 +56,9 @@ func _on_Timer_timeout():
 
 func _on_health_hp_zero_signal():
 	# hp is zeor need to die
-	queue_free()
+	# destruction the body, destroy will queue_free this
+#	queue_free()
+	$CubeDestruction.destroy_with_free_signal("enemy_free_with_destrunction_signal")
 
 
 func _on_AttackRadius_body_entered(body : Node):
@@ -66,3 +70,4 @@ func _on_AttackRadius_body_entered(body : Node):
 func _on_AttackRadius_body_exited(body):
 	if body == player:
 		isAttacking = false;
+

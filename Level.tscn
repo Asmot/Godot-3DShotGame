@@ -27,9 +27,12 @@ transform = Transform( -1, -6.18172e-08, 6.18172e-08, 0, 0.707107, 0.707107, -8.
 
 [node name="Enemies" type="Node" parent="."]
 script = ExtResource( 5 )
+max_enemy_nums = 3
 
 [node name="Timer" type="Timer" parent="Enemies"]
 autostart = true
+
+[node name="DestrunctionFreeTimer" type="Timer" parent="Enemies"]
 
 [node name="GroundNavigation" type="Navigation" parent="."]
 
@@ -60,3 +63,4 @@ depth = 1.12142
 material = ExtResource( 4 )
 
 [connection signal="timeout" from="Enemies/Timer" to="Enemies" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Enemies/DestrunctionFreeTimer" to="Enemies" method="_on_DestrunctionFreeTimer_timeout"]
