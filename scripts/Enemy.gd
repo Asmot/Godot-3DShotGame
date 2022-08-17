@@ -57,7 +57,7 @@ func _on_Timer_timeout():
 func _on_health_hp_zero_signal():
 	# hp is zeor need to die
 	# destruction the body, destroy will queue_free this
-#	queue_free()
+#	queue_free()s
 	$CubeDestruction.destroy_with_free_signal("enemy_free_with_destrunction_signal")
 
 
